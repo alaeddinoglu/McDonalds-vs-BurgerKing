@@ -1,5 +1,5 @@
 ## NLP Project
-## Prediction between McDonald's and Burger King Subreddits 
+### Prediction between McDonald's and Burger King Subreddits 
 
 
 In this project we collected posts from 2 subreddits and trained few prediction models. Two subreddits we chose were McDonald's 
