@@ -2,26 +2,26 @@
 ### Prediction between McDonald's and Burger King Subreddits 
 
 
-In this project we collected posts from 2 subreddits and trained few prediction models. Two subreddits we chose were McDonald's 
-and Burger King. Pur purpose is to designing classification models to identify the correct class of the posts between McDonald’s and Burger King subreddits 
+In this project I collected posts from 2 subreddits and trained few prediction models. Two subreddits I chose were McDonald's 
+and Burger King. The project purpose is to designing classification models to identify the correct class of the posts between McDonald’s and Burger King subreddits 
 
 ### Step 1 - Data Collection
 
- We used Pushshift API at  https://api.pushshift.io/reddit/search/comment/ address to gather data. We set the parameters as "McDonald's" and "Burger King". Each time we send a request to gather data, we could only receive 500 posts maximum. That is why we tried this process 12 times. In total we had 6,000 posts from both subreddits.
-Once we gathered all the data, we combined them in a DataFrame and exported as a CSV file.
+I used Pushshift API at https://api.pushshift.io/reddit/search/comment/ address to gather data. Then I set the parameters as "McDonald's" and "Burger King". Each time I sent a request to gather data, I could only receive 500 posts maximum. That is why I tried this process 12 times. In total I had 6,000 posts from both subreddits.
+Once all the data is gathered, combined them in a DataFrame and exported as a CSV file.
  
  
 ### Step 2 - Modeling
 
-This second step also includes data cleaning and EDA. We dropped "removed" and "deleted" columns.  With this process our number of records dropped to little over 5,000 posts. We conducted 6 analysis with 3 estimator and 1 transformer tools.
+This second step also includes data cleaning and EDA. I dropped "removed" and "deleted" columns.  With this process our number of records dropped to little over 5,000 posts. I conducted 6 analysis with 3 estimators and 1 transformer tools.
 In the first notebook, 02_data_models, you can see 3 models.
-Our first model is Multinomial Naive Bayes. We used term frequency–inverse document frequency vectorizer to transform the data. Both the transformer and the estimator were instantiated in the Pipeline. With a group parameters, we used GridSearchCV. 
+Our first model is Multinomial Naive Bayes. I used term frequency–inverse document frequency vectorizer to transform the data. Both the transformer and the estimator were instantiated in the Pipeline. With a group parameters, we used GridSearchCV. 
 These hyperparamteres were passed into the GridSearchCV:
 `English` and `none` for stopwords;  `(1,1)` and `(1,2)` for ngram_range for vectorizer. Also alpha values for Multinomial Naive Bayes 0.01, 0.1, and 1. GridSearch process fit 60 models to our data. 
 
-Our second model is K-Nearest Neighbors. We used the same vectorizer to transform the data. Both the transformer and the estimator were instantiated in the Pipeline. We passed a group of hyperparameters to GridSearchCV. The hyperparamteres that we passed `English` and `none` for stopwords; `(1,1)`, `(1,2)` and `(1,3)` for ngram_range for vectorizer. Also we included k=3, k=5, and k=7 as hyperparameters for KNN model. Additionally, we searched for Manhattan and Eucledian distances. Our gridsearch process fit 108 models to our data.
+My second model is K-Nearest Neighbors. I used the same vectorizer to transform the data. Both the transformer and the estimator were instantiated in the Pipeline. I passed a group of hyperparameters to GridSearchCV. The hyperparamteres that we passed `English` and `none` for stopwords; `(1,1)`, `(1,2)` and `(1,3)` for ngram_range for vectorizer. Also I included k=3, k=5, and k=7 as hyperparameters for KNN model. Additionally, I searched for Manhattan and Eucledian distances. The gridsearch process fit 108 models to our data.
 
-Our third choice of estimator is Logistic Regression. Just like in the previous models we used Pipeline nad Gridsearch in order to find the best parameters. We passed `English` and `none` for stopwords in the same vectorizer. Also, for ngram_range we passes `(1,1)`, `(1,2)` and `(1,3)`. For estimator Hyperparameters, we included both regularizations (Ridge and Lasso). Also, C value choices were 5.5 and 6 as hyperparameters.
+My third choice of estimator is Logistic Regression. Just like in the previous models, I used Pipeline nad Gridsearch in order to find the best parameters. I passed `English` and `none` for stopwords in the same vectorizer. Also, for ngram_range I passes `(1,1)`, `(1,2)` and `(1,3)`. For estimator Hyperparameters, I included both regularizations (Ridge and Lasso). Also, C value choices were 5.5 and 6 as hyperparameters.
 
 
 In the second notebook, we manually created stop_words list.
